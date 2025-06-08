@@ -11,12 +11,12 @@ interface Props {
 
 export default function onInput({ setWordCount, setCommaCount, setDotCount, setSemicommaCount, setHasPasted, editorRef }: Props) {
 	if (!editorRef) return
-	
-    setHasPasted(false)
+
+	setHasPasted(false)
 
 	if (!editorRef.current?.innerText) return
 
-	if (editorRef.current?.innerText !== "") {
+	if (editorRef.current?.innerText == "") {
 		setWordCount(0)
 		return
 	} else {

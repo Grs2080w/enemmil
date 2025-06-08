@@ -40,13 +40,13 @@ export default function Home() {
 		if (hasPasted === false) return
 
 		prevFontRef.current = font
-		UpdateSize({ currentSize: size, minSize: 11, maxSize: 50, step: 1, editorRef, setSize })
+		UpdateSize({ currentSize: size, minSize: 11, maxSize: 35, step: 1, editorRef, setSize })
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [font])
 
 	useEffect(() => {
 		const onResize = () => {
-			UpdateSize({ currentSize: size, minSize: 11, maxSize: 50, step: 1, editorRef, setSize })
+			UpdateSize({ currentSize: size, minSize: 11, maxSize: 35, step: 1, editorRef, setSize })
 		}
 
 		window.addEventListener("resize", onResize)
