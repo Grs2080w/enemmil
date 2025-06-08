@@ -16,12 +16,11 @@ interface Props {
 const onpaste = ({ setHasPasted, setSize, editorRef, setWordCount, setCommaCount, setDotCount, setSemicommaCount, size, e }: Props) => {
 	e.preventDefault()
 	setHasPasted(true)
-	setSize(16)
 
 	const text = e.clipboardData.getData("text/plain")
 	if (!text) return
 	const withoutLeadingSpace = text.replace(/^\s*[\r\n]/gm, "")
-	editorRef.current!.innerText = withoutLeadingSpace
+	editorRef.current!.innerText = editorRef.current!.innerText + withoutLeadingSpace
 
 	setWordCount(editorRef.current?.innerText.split(" ").length || 0)
 	if (editorRef.current?.innerText) {
