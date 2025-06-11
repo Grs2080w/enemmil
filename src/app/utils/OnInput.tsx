@@ -6,10 +6,11 @@ interface Props {
 	setDotCount: (count: number) => void
 	setSemicommaCount: (count: number) => void
 	setHasPasted: (hasPasted: boolean) => void
+	setTwoDotsCount: (count: number) => void
 	editorRef: RefObject<HTMLDivElement | null>
 }
 
-export default function onInput({ setWordCount, setCommaCount, setDotCount, setSemicommaCount, setHasPasted, editorRef }: Props) {
+export default function onInput({ setWordCount, setCommaCount, setDotCount, setSemicommaCount, setTwoDotsCount , setHasPasted, editorRef }: Props) {
 	if (!editorRef) return
 
 	setHasPasted(false)
@@ -34,4 +35,8 @@ export default function onInput({ setWordCount, setCommaCount, setDotCount, setS
 	const semicolon = editorRef.current.innerText.match(/;/g)
 	const semicolonCount = semicolon ? semicolon.length : 0
 	setSemicommaCount(semicolonCount)
+
+	const twoDots = editorRef.current.innerText.match(/:/g)
+	const twoDotsCount = twoDots ? twoDots.length : 0
+	setTwoDotsCount(twoDotsCount)
 }

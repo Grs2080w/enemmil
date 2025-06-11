@@ -10,10 +10,11 @@ interface Props {
 	setCommaCount: (count: number) => void
 	setDotCount: (count: number) => void
 	setSemicommaCount: (count: number) => void
+	setTwoDotsCount: (count: number) => void
 	size: number
 }
 
-const onpaste = ({ setHasPasted, setSize, editorRef, setWordCount, setCommaCount, setDotCount, setSemicommaCount, size, e }: Props) => {
+const onpaste = ({ setHasPasted, setSize, editorRef, setWordCount, setCommaCount, setDotCount, setSemicommaCount, setTwoDotsCount, size, e }: Props) => {
 	e.preventDefault()
 	setHasPasted(true)
 
@@ -35,6 +36,10 @@ const onpaste = ({ setHasPasted, setSize, editorRef, setWordCount, setCommaCount
 		const semicolon = editorRef.current.innerText.match(/;/g)
 		const semicolonCount = semicolon ? semicolon.length : 0
 		setSemicommaCount(semicolonCount)
+
+		const twoDots = editorRef.current.innerText.match(/:/g)
+		const twoDotsCount = twoDots ? twoDots.length : 0
+		setTwoDotsCount(twoDotsCount)
 	}
 
 	if (text.length < 1000) return
